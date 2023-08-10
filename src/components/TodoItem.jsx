@@ -29,13 +29,19 @@ const TodoItem = ({ text, id, deleteTodo, changeTodo }) => {
             </div>
             <form className="change-input" style={editMode} onSubmit={(e) => {
                 e.preventDefault()
-                changeTodo(id, changeText)
-                setEditing(false)
+                if (changeText.length === 0) {
+                    changeTodo('')
+                } else {
+                    changeTodo(changeText, id)
+                    setEditing(false)
+
+                }
             }}>
                 <input
                     type="text"
                     value={changeText}
                     className="task-input"
+                    placeholder='Введите текст...'
                     onChange={(e) => setChangeText(e.target.value)}
                 />
                 <button type="submit" className="btn btn-change"> <MdDone /></button>

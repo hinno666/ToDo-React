@@ -15,8 +15,7 @@ const TodoList = () => {
     }
 
     const changeTodo = (updateTitle, id) => {
-        console.log(updateTitle);
-        console.log(id);
+
         setTodos(
             todos.map((todo) => {
                 return { ...todo, text: todo.id === id ? updateTitle : todo.text }
