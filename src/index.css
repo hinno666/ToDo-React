@@ -44,19 +44,27 @@ h1 {
 }
 
 .todo .text {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 10px;
-  background-color: #14221e;
   border-radius: 15px;
-  margin: 20px 0;
+  background-color: #14221e;
+  margin: 20px 0 5px 0;
   box-shadow: 0px 0px 10px rgba(102, 217, 239, 0.5);
   font-weight: bold;
   width: 100%;
   text-align: start;
+  transition: 0.5s ease;
 }
-
+.todo .text-done {
+  text-decoration: line-through;
+  background-color: #000000;
+  box-shadow: 0px 0px 10px rgba(0, 255, 64, 0.5);
+  color: #fff;
+}
 .checkbox {
   margin-right: 10px;
 }
@@ -134,7 +142,18 @@ h1 {
   flex: 0;
 }
 .change-input {
-  position: relative;
+  position: absolute;
+  left: -100%;
+  transition: 0.5s ease;
+  width: 100%;
+
+}
+.change-input input {
+  padding: 20px 10px;
+  border-radius: 15px;
+}
+.change-input.active {
+  left: 0;
 }
 .btn-change {
   position: absolute;
