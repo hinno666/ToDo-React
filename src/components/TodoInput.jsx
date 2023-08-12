@@ -4,9 +4,7 @@ import { BiPlus } from 'react-icons/bi'
 const TodoInput = ({ todos, setTodos }) => {
     const [todo, setTodo] = useState('')
 
-    const randomId = function (length = 6) {
-        return Math.random().toString(36).substring(2, length + 2);
-    };
+    const randomId = Date.now();
 
     const createTodo = (e) => {
         e.preventDefault()
@@ -14,7 +12,7 @@ const TodoInput = ({ todos, setTodos }) => {
         if (todo === '') return
 
         const newTodo = {
-            id: randomId(),
+            id: randomId,
             text: todo
         }
 
@@ -25,7 +23,7 @@ const TodoInput = ({ todos, setTodos }) => {
 
     return (
         <form className="todo-input" onSubmit={createTodo}>
-            <input className="task-input" type="text" value={todo} onChange={(e) => setTodo(e.target.value)} />
+            <input placeholder="write your task..." className="task-input" type="text" value={todo} onChange={(e) => setTodo(e.target.value)} />
             <button type="submit" className="btn"><BiPlus /></button>
         </form>
     );

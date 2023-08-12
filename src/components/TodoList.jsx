@@ -14,11 +14,21 @@ const TodoList = () => {
         setTodos(newTodos);
     }
 
+    const changeTodo = (updateTitle, id) => {
+
+        setTodos(
+            todos.map((todo) => {
+                return { ...todo, text: todo.id === id ? updateTitle : todo.text }
+            })
+        )
+    }
+
+
     return (<div className="todo-list">
         <TodoInput todos={todos} setTodos={setTodos} />
-        {todos.length === 0 ? <p className="deals">Нет дел...</p> : 
+        {todos.length === 0 ? <p className="deals">Нет дел...</p> :
             todos.map((todo) => {
-                return <TodoItem key={todo.id} {...todo} deleteTodo={deleteTodo} />
+                return <TodoItem key={todo.id} {...todo} deleteTodo={deleteTodo} changeTodo={changeTodo} />
             })
         }
 
